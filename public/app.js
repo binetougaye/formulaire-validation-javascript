@@ -8,7 +8,7 @@ const message = document.getElementById("message")
 const consentCheck = document.getElementById("check3")
 const submitBtn = document.getElementById("submit")
 const form = document.querySelector("form")
-console.log(check1.value, check2.value);
+console.log(check1.checked, check2.checked);
 
 // 
 const firstNameError = document.getElementById("firstNameError")
@@ -19,7 +19,9 @@ const messageError = document.getElementById("messageError")
 const consentError = document.getElementById("consentError")
 function validateForm(e) {
     e.preventDefault()
-    if (firstName.value && lastName.value && emailAdress.value && check1.value && message.value && consentCheck.value) {
+    console.log(check1.checked);
+
+    if (firstName.value && lastName.value && emailAdress.value && check2.checked && message.value && consentCheck.checked) {
         showToast()
     } else if (firstName.value === "") {
         firstNameError.textContent = "Firstname is required"
@@ -27,23 +29,14 @@ function validateForm(e) {
         lastNameError.textContent = "Lastname is required"
     } else if (emailAdress.value === "") {
         mailError.textContent = "Email is required"
-    } else if (check1.checked) {
-        // check1.textContent = "check1"
-        console.log(check1.value);
-
-
+    } else if (!(check1.checked || check2.checked)) {
+        checkError.textContent = "test"
     }
 
-}
-function checkCheckbox() {
 
-    if (check1.checked) {
-        console.log("Checkbox is checked!");
-    } else {
-        console.log("Checkbox is unchecked!");
-    }
 }
-// 
+
+// Toast
 function showToast() {
     Toastify({
         text: "Formulaire soumis avec succès!",
@@ -55,4 +48,3 @@ function showToast() {
 }
 
 form.addEventListener("submit", validateForm)
-// submitBtn.addEventListener("click", showToast)
