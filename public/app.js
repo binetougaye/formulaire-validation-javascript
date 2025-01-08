@@ -8,29 +8,55 @@ const message = document.getElementById("message")
 const consentCheck = document.getElementById("check3")
 const submitBtn = document.getElementById("submit")
 const form = document.querySelector("form")
-console.log(check1.checked, check2.checked);
 
 // 
 const firstNameError = document.getElementById("firstNameError")
 const lastNameError = document.getElementById("lastNameError")
-const mailError = document.getElementById("mailError")
+const emailError = document.getElementById("emailError")
 const checkError = document.getElementById("checkError")
 const messageError = document.getElementById("messageError")
 const consentError = document.getElementById("consentError")
-function validateForm(e) {
-    e.preventDefault()
-    console.log(check1.checked);
 
-    if (firstName.value && lastName.value && emailAdress.value && check2.checked && message.value && consentCheck.checked) {
+function validateForm(e) {
+
+
+
+    e.preventDefault()
+
+    let isValid = true
+    // Validations des champs
+    if (firstName.value.trim() === "") {
+        firstNameError.textContent = "The first name field is required"
+        isValid = false
+    }
+    if (lastName.value.trim() === "") {
+        lastNameError.textContent = "The last name field is required"
+        isValid = false
+    }
+    if (emailAdress.value.trim() === "") {
+        emailError.textContent = "The email field is required"
+        isValid = false
+    }
+    if (!(check1.checked && check2.checked)) {
+        checkError.textContent = "Please select both checkboxes"
+        isValid = false
+    }
+    if (message.value.trim() === "") {
+        messageError.textContent = "Message is required"
+        isValid = false
+    }
+    if (!consentCheck.checked) {
+        consentError.textContent = "You must agree to the terms"
+        isValid = false
+    }
+    if (isValid) {
+        firstNameError.textContent = "";
+        lastNameError.textContent = "";
+        emailError.textContent = "";
+        checkError.textContent = "";
+        messageError.textContent = "";
+        consentError.textContent = "";
         showToast()
-    } else if (firstName.value === "") {
-        firstNameError.textContent = "Firstname is required"
-    } else if (lastName.value === "") {
-        lastNameError.textContent = "Lastname is required"
-    } else if (emailAdress.value === "") {
-        mailError.textContent = "Email is required"
-    } else if (!(check1.checked || check2.checked)) {
-        checkError.textContent = "test"
     }
 
 
