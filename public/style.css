@@ -19,3 +19,9 @@ body {
     font-size: 12px;
     margin-top: 5px;
 }
+.input {
+    border: 1px solid red;
+}
+#submit:hover {
+    background-color: rgba(#fff, rgb(162, 233, 162), #fff, 0.4);
+}
