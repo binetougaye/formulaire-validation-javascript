@@ -24,21 +24,25 @@ function validateForm(e) {
     let isValid = true
     // Validations des champs
     if (firstName.value.trim() === "") {
+        firstName.focus()
         firstNameError.innerHTML = "The first name field is required"
         firstName.classList.add("input")
         isValid = false
     }
     if (lastName.value.trim() === "") {
+        lastName.focus()
         lastNameError.textContent = "The last name field is required"
         lastName.classList.add("input")
         isValid = false
     }
     if (emailAdress.value.trim() === "") {
+        emailAdress.focus()
         emailError.textContent = "The email field is required"
         emailAdress.classList.add("input")
         isValid = false
     }
     if (!(emailAdress.value.match(validEmailRegex))) {
+        emailAdress.focus()
         emailError.textContent = "Please enter a valid email format"
         emailAdress.classList.add("input")
         isValid = false
@@ -52,6 +56,7 @@ function validateForm(e) {
         isValid = false
     }
     if (message.value.trim() === "") {
+        message.focus()
         messageError.textContent = "Message is required"
         message.classList.add("input")
         isValid = false
